@@ -1,27 +1,33 @@
 // Router.js
-import React from 'react';
-import Index from '@/pages'
-import Diary from '@/pages/diary';
-import Detail from '@/pages/diary/detail';
-import Edit from '@/pages/diary/edit';
-
+import React, { Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Redirect,
+  Link,
+  withRouter
 } from "react-router-dom";
+import routes from './route.js';
 
-const RouterMap = () => {
-  return <Router>
-    <Switch>
-      <Route exact path="/" component={Index} />
-      <Route exact path="/diary" component={Diary} />
-      <Route  path="/diary/detail" component={Detail} />
-      <Route  path="/diary/edit" component={Edit} />
-        
-    </Switch>
+const RouterMap = () => (
+  <Router>
+
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        {
+          routes.map((route, index) => {
+            if(route.redirectTo) {
+              return <Redirect from={route.path} to={route.redirectTo} key={index}/>
+            }else {
+              return <Route {...route} key={index} />
+            }
+          })
+        }
+      </Switch>
+    </Suspense>
+
   </Router>
-}
+)
 
 export default RouterMap;

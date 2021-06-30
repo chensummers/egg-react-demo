@@ -1,11 +1,13 @@
 // App.js
-import React from 'react';
-import { Button } from 'antd-mobile';
+import React,{useState,useEffect} from 'react';
+import RouterMap from '../routes';
+import './index.css'
 
-function App() {
+function App(props) {
+  
   return (
     <div className="App">
-      this is demo for egg!
+      <RouterMap />
     </div>
   );
 }

@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import RouterMap from './routes';
+import App  from './pages';
 import 'antd-mobile/dist/antd-mobile.css';
 
 ReactDOM.render(
   // <React.StrictMode>
   // </React.StrictMode>,
-    <RouterMap/>,
+    <App />,
   document.getElementById('root')
 );
 

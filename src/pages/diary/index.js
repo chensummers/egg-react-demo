@@ -54,7 +54,12 @@ const Home = ({history,...props}) => {
         history.push('/diary/edit?status=1');
     }
     return (
-        <WrapCom title="我的日记" className='diary-list'>
+        <WrapCom 
+            title="我的日记"
+            isHiddenNavHead={true}
+            isShowNavBar={true}
+            className='diary-list'
+        >
 
             {
                 list.map(item => <Card className='diary-item' key={item.id} onClick={()=>goToDetail(item.id)}>
