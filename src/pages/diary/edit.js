@@ -5,15 +5,15 @@ import {getQuery} from '@/utils/tools.js';
 import WrapCom from '@/pages/components/WrapCom';
 import {diaryAdd,diaryUpdate,diaryDetail} from '@/api/path.js';
 import {WEATHERS,} from '@/utils/constant.js'
-import './index.css'
+import './index.scss'
 
 
-const RadioItem = Radio.RadioItem;
 
 const Edit = ({history,...props}) => {
     const [state,setState] = useReducer(
         (o,n)=>({...o,...n}),{
-            status:null
+            status:null,
+            detail:{}
         }
     )
     const [files, setFile] = useState([])
@@ -26,10 +26,9 @@ const Edit = ({history,...props}) => {
     useEffect(()=>{
         state.id&&diaryDetail(state.id).then(res=>{
             if(res.status==200) {
-                setState(res.data)
+                setState({detail:{...res.data}})
                 setFile([{url:res.data.url}])
             }
-            console.log('/detail.js [16]--1',res);
         })
     },[state.id])
     const handleChange = (e,key) =>{
@@ -42,13 +41,18 @@ const Edit = ({history,...props}) => {
         if(key ==='weather_status') {
             value = e[0]
         }
+        
+        const {detail} = state
         setState({
-            [key]:value
+            detail:{
+                ...detail,
+                [key]:value
+            }
         })
         
     }
     const handleSubmit = () => {
-        const {status,title,content,url,weather_status} = state;
+        const {title,content,url,weather_status} = state.detail;
         console.log('/edit.js [39]--1',state);
         if(!title) {
             Toast.fail('请添加标题')
@@ -67,7 +71,7 @@ const Edit = ({history,...props}) => {
             return;
         }
 
-        if(status ==1) {
+        if(state.status ==1) {
             addDiary()
         }else{
             updateDiary()
@@ -75,8 +79,7 @@ const Edit = ({history,...props}) => {
     }
 
     const addDiary = () => {
-        const {title,content,url,weather_status} = state;
-        diaryAdd({title,content,url,weather_status}).then(res=>{
+        diaryAdd(state.detail).then(res=>{
             if(res.status===200) {
                 Toast.success('添加成功',0.4,()=>{
                     history.push('/diary')
@@ -86,8 +89,7 @@ const Edit = ({history,...props}) => {
         })
     }
     const updateDiary = () => {
-        const {title,content,url,weather_status,id} = state;
-        diaryUpdate({id,title,content,url,weather_status}).then(res=>{
+        diaryUpdate(state.detail).then(res=>{
             if(res.status===200) {
                 Toast.success('编辑成功',0.4,()=>{
                     history.push('/diary')
@@ -99,6 +101,7 @@ const Edit = ({history,...props}) => {
     return (
         <WrapCom 
             className='diary-edit'
+            isShowNavBar={false}
             title={state.status==1?'添加日记':'编辑日记'}
         >
         {/* <NavBar /> */}
@@ -106,13 +109,13 @@ const Edit = ({history,...props}) => {
             <InputItem
                 clear
                 placeholder="请输入标题"
-                value={state.title}
+                value={state.detail.title}
                 onChange={ (e)=>handleChange(e,'title')}
             >标题</InputItem>
             <TextareaItem
                 rows={6}
                 placeholder="请输入日记内容"
-                value={state.content}
+                value={state.detail.content}
                 onChange={ (e)=>handleChange(e,'content')}
             />
             <WhiteSpace size="lg" />
@@ -121,7 +124,7 @@ const Edit = ({history,...props}) => {
                 cols={1} 
                 className="forss"
                 disabled={state.status!=1}
-                value={[state.weather_status]}
+                value={[state.detail.weather_status]}
                 onChange={(e)=>handleChange(e,'weather_status')}
             >
                 <List.Item arrow="horizontal">天气</List.Item>
@@ -139,4 +142,4 @@ const Edit = ({history,...props}) => {
     </WrapCom>)
 }
 
-export default Edit
+export default Edit;

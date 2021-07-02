@@ -6,7 +6,7 @@ import {getQuery} from '@/utils/tools.js';
 import {diaryDetail} from '@/api/path.js';
 import {WEATHER_STATUS,WEATHER_COLORS} from '@/utils/constant.js';
 import moment from 'moment';
-import './index.css';
+import './index.scss';
 
 moment.locale(); 
 const formatDate = date => moment(date).format('LLL');

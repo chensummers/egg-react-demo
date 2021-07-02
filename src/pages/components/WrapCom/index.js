@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, forwardRef } from 'react';
 import { withRouter } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
-import './index.css';
+import './index.scss';
 import NavBar from '../NavBar';
 const Icon = {
     diary: [
@@ -37,17 +37,14 @@ const NavBarCom = forwardRef(NavBar)
 /***
  * 
  * {className}
- * {isShowNavBar}
- * {isHiddenNavHead}
+ * {isShowNavBar} 显示头部导航
+ * {isHiddenNavHead} 是否隐藏底部navtab
  * 
  *  */
 const WrapCom = ({ title, children, className,...rest }) => {
-    console.log('/index.js [7]--1', rest);
     const {pathname} = rest.location||{};
     const [tab, setTab] = useState(null)
     useEffect(() => {
-        
-        console.log('/index.js [40]--1', 'pathname', pathname);
         if (pathname === '/' || pathname === '/my') {
             setTab('my')
         }
@@ -61,7 +58,7 @@ const WrapCom = ({ title, children, className,...rest }) => {
     }
     
     return (
-        <div className="wrap" >
+        <div className={`wrap ${rest.isHiddenNavHead&&'hidden-nav-head'}`}>
             {!rest.isHiddenNavHead && <NavBarCom title={title} />}
             <div className={`content ${className}`}>
                 {
@@ -73,7 +70,7 @@ const WrapCom = ({ title, children, className,...rest }) => {
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={rest.isShowNavBar}
+                    hidden={!rest.isShowNavBar}
                 >
                     <TabBar.Item
                         title="diary"

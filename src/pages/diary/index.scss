@@ -1,0 +1,63 @@
+.diary-list {
+    .diary-item {
+        margin-bottom: 20px;
+        .am-card-header-content {
+            /* flex: 2 1; */
+        }
+        .am-card-header-content img {
+            width: 40px;
+        }
+        .diary-item-txt{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .diary-item-txt-span {
+            margin-left: 10px;
+        }
+    }
+    
+    .add {
+        position: fixed;
+        right: 20px;
+        bottom: 100px;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        color: #fff;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 20px;
+        z-index: 10000;
+    }
+}
+
+// 详情
+.diary-detail {
+    .detail-img  {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+    }
+}
+
+
+
+.my-list {
+
+}
+.diary-edit {
+    height: 100vh;
+    background: #fff;
+}
+.diary-edit .am-button-primary.sumit {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+.diary-edit .label {
+    text-indent: 15px;
+}

@@ -1,0 +1,28 @@
+.login {
+    height: calc(100% - 200px);
+    width: calc(100% - 100px);
+    padding: 100px 50px;
+    background: #fff;
+}
+.login .am-list-body::before {
+    display: none!important;
+}
+.login .am-list-item.am-input-item,
+.login .am-list-item,
+.login .am-list-item .am-list-line
+{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.login .title {
+    font-size: 20px;
+    line-height: 60px;
+    text-align: center;
+}
+.login .submit {
+    margin-top: 40px;
+}
+.login .tab {
+    line-height: 26px;
+    color: #108ee9;
+}

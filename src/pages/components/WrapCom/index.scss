@@ -1,6 +1,10 @@
 .wrap {
     padding-top: 45px;
     height: calc(100% - 45px);
+    &.hidden-nav-head {
+        padding-top: 0;
+        height:100%;
+    }
 }
 .content {
     min-height: 100%;

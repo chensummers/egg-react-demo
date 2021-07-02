@@ -4,7 +4,7 @@ import { Card, Button,Modal,Toast } from 'antd-mobile';
 import {diaryList,diaryDel} from '@/api/path.js';
 import WrapCom from '@/pages/components/WrapCom';
 import {WEATHER_STATUS} from '@/utils/constant.js'
-import './index.css'
+import './index.scss'
 import moment from 'moment';
 
 const formatDate = date => moment(date).format('LLL');

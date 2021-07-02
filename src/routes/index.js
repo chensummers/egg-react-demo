@@ -13,7 +13,7 @@ import routes from './route.js';
 const RouterMap = () => (
   <Router>
 
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div></div>}>
       <Switch>
         {
           routes.map((route, index) => {

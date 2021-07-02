@@ -9,11 +9,18 @@ const routes = [
     component:lazy(() => import('@/pages/my')),
   },
   {
+    path:'/login',
+    exact: true,
+    name:'登录',
+    component:lazy(() => import('@/pages/login')),
+  },
+  {
     path:'/my',
     redirectTo:'/',
   },
   {
     path:'/diary',
+    exact: true,
     name:'/日记',
     component:lazy(() => import('@/pages/diary')),
   },
@@ -25,6 +32,7 @@ const routes = [
   {
     path:'/diary/edit',
     name:'编辑日记',
+    exact: true,
     component:lazy(() => import('@/pages/diary/edit')),
   }
 ];
