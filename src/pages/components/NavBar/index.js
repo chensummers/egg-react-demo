@@ -13,7 +13,6 @@ const NavBarCom = ({title,...rest},ref) => {
     return (
         <div className="navbar" ref={navRef}>
             <NavBar
-                
                 mode="light"
                 icon={<Icon type="left" />}
                 onLeftClick={goBack}

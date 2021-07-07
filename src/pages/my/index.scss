@@ -39,3 +39,38 @@
         }
     }
 }
+
+.user{
+    .loginout {
+        position: fixed!important;
+        bottom: 0;
+        width: 100%;
+    }
+    .am-input-control {
+        input{
+            text-align: right;
+        }
+
+    }
+    // .loginout {
+    //     margin-top: 20px;
+    // }
+    // .am-list-item {
+    //     &.am-input-disabled {
+    //         .am-input-label {
+    //             color: #000;
+    //         }
+    //     }
+    //     .am-input-control {
+    //         input:disabled {
+    //             color: #000;
+    //         }
+    //     }
+    // }
+}
+
+.user-list{
+    img {
+        margin-left: 10px;
+    }
+}

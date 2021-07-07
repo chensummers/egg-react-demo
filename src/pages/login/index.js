@@ -28,7 +28,6 @@ const Index = (props) => {
         }
 
         if (value && value.length >= 5) {
-            setState({ password: value });
             callback();
         } else {
             callback(new Error('请输入至少5位字符'));
@@ -39,11 +38,12 @@ const Index = (props) => {
         if (!value) {
             callback(new Error('请输入密码'));
         }
+
         if (state.tab === 1) {
+            // 当login的时候不需要校验，直接用后端返回toast msg
             callback();
         } else {
             if (value && value.length >= 3) {
-                setState({ password: value });
                 callback();
             } else {
                 callback(new Error('请输入至少3位密码'));

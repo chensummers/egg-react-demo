@@ -13,7 +13,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   const token = sessionStorage.getItem('token')
-  console.log('/index.js [15]--1',config);
   config.headers.token = token
   return config;
 }, function (error) {

@@ -41,7 +41,7 @@ const NavBarCom = forwardRef(NavBar)
  * {isHiddenNavHead} 是否隐藏底部navtab
  * 
  *  */
-const WrapCom = ({ title, children, className,...rest }) => {
+const WrapCom = ({ title, children, className,rightContent,...rest }) => {
     const {pathname} = rest.location||{};
     const [tab, setTab] = useState(null)
     useEffect(() => {
@@ -59,7 +59,7 @@ const WrapCom = ({ title, children, className,...rest }) => {
     
     return (
         <div className={`wrap ${rest.isHiddenNavHead&&'hidden-nav-head'}`}>
-            {!rest.isHiddenNavHead && <NavBarCom title={title} />}
+            {!rest.isHiddenNavHead && <NavBarCom title={title} rightContent={rightContent}/>}
             <div className={`content ${className}`}>
                 {
                     children

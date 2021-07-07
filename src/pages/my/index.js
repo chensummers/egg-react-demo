@@ -40,8 +40,8 @@ const Index = (props) => {
             isHiddenNavHead={true}
             isShowNavBar={true}
         >
-            <div className="head">
-                <div className="avator"><img src={avatarImg}/></div>
+            <div className="head" onClick={()=>handleToPage(`/userInfo/${userInfo.id}`)}>
+                <div className="avator" ><img src={avatarImg}/></div>
                 <div className="user">
                     {
                         userInfo.id?
@@ -65,7 +65,13 @@ const Index = (props) => {
             <List className="content">
                 <Item arrow="horizontal" multipleLine onClick={()=>handleToPage('/diary')}>
                     我的日记
-                </Item> 
+                </Item>
+                {
+                    userInfo.privilege ===0 &&
+                    <Item arrow="horizontal" multipleLine onClick={()=>handleToPage('/userList')}>
+                        我的用户
+                    </Item> 
+                }
             </List>
         </WrapCom>
     )

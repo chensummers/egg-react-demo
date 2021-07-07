@@ -7,6 +7,11 @@ export const loginout = () => request.post('/loginout');
 
 // user
 export const getUserInfo = () => request.get('/user/get');
+export const getUserById = (id) => request.get(`/user/${id}`);
+export const updateUser = (params) => request.put(`/user/update`,params);
+export const addUser = (params) => request.post(`/user/add`,params);
+export const deleteUser = (id) => request.delete(`/user/${id}`);
+export const getUserList = () => request.post(`/user/list`);
 
 // 日记
 export const diaryList = () => request.get('/diary/list');

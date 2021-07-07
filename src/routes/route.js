@@ -1,12 +1,23 @@
 import React,{lazy} from 'react';
 
 const routes = [
-  
   {
     path:'/',
     exact: true,
     name:'我的',
     component:lazy(() => import('@/pages/my')),
+  },
+  {
+    path:'/userInfo/:id',
+    exact: true,
+    name:'个人信息',
+    component:lazy(() => import('@/pages/my/userInfo')),
+  },
+  {
+    path:'/userList',
+    exact: true,
+    name:'用户列表',
+    component:lazy(() => import('@/pages/my/userList')),
   },
   {
     path:'/login',
